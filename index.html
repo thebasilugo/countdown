@@ -4,19 +4,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- semantic ui cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+      integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <!-- tailwind css cdn -->
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="style.css" />
     <title>Countdown</title>
   </head>
   <body class="bg-gray-100 flex items-center justify-center h-screen">
     <div
-      id="del-countdown"
-      class="bg-white py-4 sm:p-8 rounded-lg sm:shadow-lg text-center"
+      id="countdown-app"
+      class="bg-white p-4 sm:p-8 rounded-lg shadow-sm sm:shadow-lg text-center"
     >
       <input
         type="text"
@@ -32,12 +41,22 @@
         <span class="col-span-1 hidden md:block pl-4">Minutes</span>
         <span class="col-span-1 hidden md:block pl-4">Seconds</span>
       </div>
-      <input
-        type="date"
-        name=""
-        id="change-countdown-date"
-        class="border p-2 rounded-md"
-      />
+      <div class="button-container">
+        <input
+          type="date"
+          name=""
+          id="change-countdown-date"
+          class="bg-gray-200 hover:bg-gray-100 text-black font-bold py-2 px-4 text-sm md:text-md mx-2 md:mx-4 rounded cursor-pointer"
+          title="change countdown date"
+        />
+        <button
+          id="back-btn"
+          class="w-2/5 md:w-1/5 bg-gray-200 hover:bg-gray-100 text-black font-bold py-2 px-4 text-sm md:text-md mx-2 md:mx-4 rounded cursor-pointer"
+          title="back to previous countdown"
+        >
+          <i class="chevron left icon"></i>&nbsp;back
+        </button>
+      </div>
     </div>
     <h2 id="end-countdown" class="text-center text-xl mt-4"></h2>
     <script src="app.js"></script>
