@@ -1,8 +1,8 @@
-let text = document.getElementById("inner-text");
-let endCountdown = document.getElementById("end-countdown");
-let delCountdown = document.getElementById("del-countdown");
-
-text.value = "unknown";
+const text = document.querySelector("#inner-text");
+const endCountdown = document.querySelector("#end-countdown");
+const delCountdown = document.querySelector("#del-countdown");
+const changeCountdownDate = document.querySelector("#change-countdown-date");
+text.placeholder = "name this countdown";
 // text.style.overflow = "hidden"
 
 const updateTimer = (deadline) => {
@@ -42,7 +42,9 @@ const startTimer = (id, deadline) => {
       clearInterval(timerInterval);
       clock.innerHTML =
         "<span>0</span><span>0</span><span>0</span><span>0</span>";
-      endCountdown.innerHTML = `The countdown for ${text.value} has been reached, or expired.`;
+      endCountdown.innerHTML = `The countdown ${
+        text.value && `for ${text.value}`
+      } has been reached, or expired.`;
       endCountdown.style.display = "block";
       delCountdown.style.display = "none";
     }
@@ -50,7 +52,7 @@ const startTimer = (id, deadline) => {
 };
 
 window.onload = function () {
-  let deadline = new Date("November 30, 2024 00:00:00");
+  let deadline = new Date("nov 3, 2024 00:00:00");
   startTimer("clock", deadline);
 };
 
