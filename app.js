@@ -1,14 +1,17 @@
+// Selecting necessary DOM elements
 const countdownApp = document.querySelector("#countdown-app");
 const text = document.querySelector("#inner-text");
 const endCountdown = document.querySelector("#end-countdown");
 const countdownClock = document.querySelector("#clock");
 const changeCountdownDate = document.querySelector("#change-countdown-date");
 const backBtn = document.querySelector("#back-btn");
-let deadline;
 
+// Initialize variables
+let deadline;
 let dateIsSelected = false;
 let timerInterval; // Declare timerInterval here
 
+// Function to calculate remaining time
 const updateTimer = (deadline) => {
   let time = deadline - new Date();
   return {
@@ -20,13 +23,13 @@ const updateTimer = (deadline) => {
   };
 };
 
+// Function to start the countdown timer
 const startTimer = (id, deadline) => {
   countdownApp.style.display = "block";
   if (timerInterval) {
     clearInterval(timerInterval); // Clear the old interval
   }
   timerInterval = setInterval(function () {
-    // Remove the let keyword
     let clock = document.getElementById(id);
     let timer = updateTimer(deadline);
 
@@ -34,7 +37,7 @@ const startTimer = (id, deadline) => {
 
     endCountdown.style.display = "none";
 
-    // check for end of timer
+    // Check for end of timer
     if (timer.total < 1) {
       clearInterval(timerInterval);
       clock.innerHTML =
@@ -45,15 +48,23 @@ const startTimer = (id, deadline) => {
       endCountdown.style.display = "block";
       countdownApp.style.display = "none";
     }
+    // Check if the deadline is the original deadline
+    if (deadline.getTime() === new Date("nov 3, 2024 00:00:00").getTime()) {
+      backBtn.style.display = "none"; // Make the back button visible
+    } else {
+      backBtn.style.display = "inline-block"; // Make the back button visible
+    }
   }, 1000);
 };
 
+// Function to check if a date is selected
 const checkIfDateIsSelected = () => {
   if ((selectedDate = new Date(changeCountdownDate.value))) {
     dateIsSelected = true;
   } else dateIsSelected = false;
 };
 
+// Function to update the countdown
 const updateCountdown = () => {
   const selectedDate = new Date(changeCountdownDate.value);
   checkIfDateIsSelected();
@@ -70,8 +81,10 @@ const updateCountdown = () => {
   startTimer("clock", selectedDate);
 };
 
+// Event listener for date change
 changeCountdownDate.addEventListener("change", updateCountdown);
 
+// Function to render the countdown timer
 const renderDate = (timer) => {
   clock.innerHTML = `<span class="w-1/4 px-2">
   ${timer.days}
@@ -87,10 +100,12 @@ const renderDate = (timer) => {
   </span>`;
 };
 
+// Function to set the original timer
 const setOriginalTimer = () => {
   deadline = new Date("nov 3, 2024 00:00:00");
 };
 
+// On window load, set the original timer and start it
 window.onload = () => {
   setOriginalTimer();
   dateIsSelected === false
@@ -99,13 +114,14 @@ window.onload = () => {
   text.placeholder = "name this countdown";
 };
 
+// Event listener for back button click
 backBtn.addEventListener("click", function () {
   setOriginalTimer();
   startTimer("clock", deadline);
 });
 
-// updates:
-// update the name of the deadline from the website: done
-// an update of the date on the website: done
-// add a dark mode icon
-// make it such that if date is in the past (bg would change to dark, and it'll write "it's been ...")
+// TODO:
+// - Update the name of the deadline from the website: done
+// - An update of the date on the website: done
+// - Add a dark mode icon
+// - Make it such that if date is in the past (bg would change to dark, and it'll write "it's been ...")
