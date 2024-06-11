@@ -22,7 +22,7 @@
         type="text"
         name=""
         id="inner-text"
-        class="text-2xl mb-4 text-center border border-gray-100"
+        class="text-xl md:text-2xl text-center border border-gray-100"
         placeholder="fetching..."
       />
       <div id="clock" class="mb-4 text-2xl md:text-6xl"></div>
@@ -32,7 +32,12 @@
         <span class="col-span-1 hidden md:block pl-4">Minutes</span>
         <span class="col-span-1 hidden md:block pl-4">Seconds</span>
       </div>
-      <input type="date" name="" id="" class="border p-2 rounded-md" />
+      <input
+        type="date"
+        name=""
+        id="change-countdown-date"
+        class="border p-2 rounded-md"
+      />
     </div>
     <h2 id="end-countdown" class="text-center text-xl mt-4"></h2>
     <script src="app.js"></script>
