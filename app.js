@@ -40,11 +40,10 @@ const startTimer = (id, deadline) => {
     // Check for end of timer
     if (timer.total < 1) {
       clearInterval(timerInterval);
-      clock.innerHTML =
-        "<span>0</span><span>0</span><span>0</span><span>0</span>";
+      // clock.innerHTML = "<span>0</span><span>0</span><span>0</span><span>0</span>";
       endCountdown.innerHTML = `The countdown ${
         text.value && `for ${text.value}`
-      } has been reached, or expired.`;
+      } has been reached, or expired. <br/> <button class="bg-gray-200 hover:bg-gray-500 text-gray-500 hover:text-gray-200 rounded-md m-4 px-4 py-2">show time</button>`;
       endCountdown.style.display = "block";
       countdownApp.style.display = "none";
     }
