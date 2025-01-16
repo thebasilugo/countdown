@@ -69,7 +69,7 @@ const renderDate = (timer) => {
   </span>`;
 };
 const setOriginalTimer = () => {
-    deadline = new Date("nov 3, 2024 00:00:00");
+    deadline = new Date("nov 3, 2025 00:00:00");
 };
 let selectedDate;
 window.onload = () => {
